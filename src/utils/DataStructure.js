@@ -14,7 +14,7 @@ const defaultUserData = {
       fieldOfStudy: "Nerdy Stuff",
       startYear: "2018",
       endYear: "2022",
-      location: "Citytown, ST"
+      location: "Citytown, ST",
     },
   ],
   workExperience: [
@@ -29,9 +29,21 @@ const defaultUserData = {
         "Performed widget quality control",
         "Lead daily widget meetings",
       ],
-      location: "Townville, ST"
+      location: "Townville, ST",
     },
   ],
 };
 
-export default defaultUserData;
+const emptyUserData = {
+  personalDetails: {
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+  },
+
+  education: [],
+  workExperience: [],
+};
+
+export { defaultUserData, emptyUserData };

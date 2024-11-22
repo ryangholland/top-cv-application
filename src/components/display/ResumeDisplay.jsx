@@ -6,7 +6,7 @@ import ExperienceDisplay from "./ExperienceDisplay";
 
 function ResumeDisplay({ userData }) {
   return (
-    <Container style={{ height: '11in'}}>
+    <Container style={{ height: "11in" }}>
       <Row className="p-4 bg-dark text-light">
         <Col xs="12">
           <h1 className="text-center mb-3 fw-bold">
@@ -24,8 +24,9 @@ function ResumeDisplay({ userData }) {
         <Col xs={{ span: 10, offset: 1 }} className="mt-3">
           <h5 className="text-center p-2 bg-dark-subtle fw-bold">Education</h5>
         </Col>
-        <EducationDisplay education={userData.education[0]} />
-        <EducationDisplay education={userData.education[0]} />
+        {userData.education.length > 0 && (
+          <EducationDisplay education={userData.education[0]} />
+        )}
       </Row>
       <Row>
         <Col xs={{ span: 10, offset: 1 }} className="mt-3">
@@ -33,8 +34,9 @@ function ResumeDisplay({ userData }) {
             Professional Experience
           </h5>
         </Col>
-        <ExperienceDisplay experience={userData.workExperience[0]} />
-        <ExperienceDisplay experience={userData.workExperience[0]} />
+        {userData.workExperience.length > 0 && (
+          <ExperienceDisplay experience={userData.workExperience[0]} />
+        )}
       </Row>
     </Container>
   );

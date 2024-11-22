@@ -10,9 +10,6 @@ function EducationGroup() {
       <Button className="w-100 mb-2" variant="outline-secondary">
         Education 2
       </Button>
-      <div className="d-flex justify-content-center mt-2">
-        <Button variant="secondary">&#43; Add Education</Button>
-      </div>
     </Col>
   );
 }

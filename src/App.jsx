@@ -10,7 +10,7 @@ import ExperienceGroup from "./components/input/ExperienceGroup";
 import EducationDetailsForm from "./components/input/EducationDetailsForm";
 
 import { useState } from "react";
-import defaultUserData from "./utils/DataStructure";
+import { defaultUserData, emptyUserData } from "./utils/DataStructure";
 import ResumeDisplay from "./components/display/ResumeDisplay";
 import ExperienceDetailsForm from "./components/input/ExperienceDetailsForm";
 
@@ -27,6 +27,14 @@ function App() {
     }));
   };
 
+  const loadExample = () => {
+    setUserData(defaultUserData);
+  };
+
+  const clearResume = () => {
+    setUserData(emptyUserData);
+  };
+
   return (
     <Container>
       <h1 className="my-2">CV Builder</h1>
@@ -35,12 +43,16 @@ function App() {
         <Col xs={12} lg={4} className="bg-secondary-subtle p-4">
           <Row className="my-2">
             <Col>
-              <Button variant="secondary" className="w-100">
+              <Button
+                variant="secondary"
+                className="w-100"
+                onClick={loadExample}
+              >
                 Load Example
               </Button>
             </Col>
             <Col>
-              <Button variant="danger" className="w-100">
+              <Button variant="danger" className="w-100" onClick={clearResume}>
                 Clear Resume
               </Button>
             </Col>
@@ -59,15 +71,21 @@ function App() {
               <Accordion.Item eventKey="1" className="mb-3">
                 <Accordion.Header>Education</Accordion.Header>
                 <Accordion.Body>
-                  {/* <EducationGroup /> */}
-                  <EducationDetailsForm />
+                  {userData.education.length > 0 && <EducationGroup />}
+                  <div className="d-flex justify-content-center mt-2">
+                    <Button variant="secondary">&#43; Add Education</Button>
+                  </div>
+                  {/* <EducationDetailsForm /> */}
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Experience</Accordion.Header>
                 <Accordion.Body>
-                  {/* <ExperienceGroup /> */}
-                  <ExperienceDetailsForm />
+                  {userData.workExperience.length > 0 && <ExperienceGroup />}
+                  <div className="d-flex justify-content-center mt-2">
+                    <Button variant="secondary">&#43; Add Experience</Button>
+                  </div>
+                  {/* <ExperienceDetailsForm /> */}
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
