@@ -15,7 +15,7 @@ function PersonalDetailsForm() {
 
       <Form.Group className="mb-2">
         <Form.Label>Phone number</Form.Label>
-        <Form.Control type="number" placeholder="Enter phone number" />
+        <Form.Control type="text" placeholder="Enter phone number" />
       </Form.Group>
 
       <Form.Group className="mb-2">

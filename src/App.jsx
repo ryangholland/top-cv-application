@@ -7,10 +7,12 @@ import Accordion from "react-bootstrap/Accordion";
 import PersonalDetailsForm from "./components/input/PersonalDetailsForm";
 import EducationGroup from "./components/input/EducationGroup";
 import ExperienceGroup from "./components/input/ExperienceGroup";
+import EducationDetailsForm from "./components/input/EducationDetailsForm";
 
 import { useState } from "react";
 import defaultUserData from "./utils/DataStructure";
 import ResumeDisplay from "./components/display/ResumeDisplay";
+import ExperienceDetailsForm from "./components/input/ExperienceDetailsForm";
 
 function App() {
   const [userData, setUserData] = useState(defaultUserData);
@@ -54,13 +56,15 @@ function App() {
               <Accordion.Item eventKey="1" className="mb-3">
                 <Accordion.Header>Education</Accordion.Header>
                 <Accordion.Body>
-                  <EducationGroup />
+                  {/* <EducationGroup /> */}
+                  <EducationDetailsForm />
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Experience</Accordion.Header>
                 <Accordion.Body>
-                  <ExperienceGroup />
+                  {/* <ExperienceGroup /> */}
+                  <ExperienceDetailsForm />
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -73,37 +77,8 @@ function App() {
         {/* Resume Display */}
         <Col xs={12} lg={7} className="border border-secondary ">
           <ResumeDisplay userData={userData} />
-          {/* <div className="p-4 bg-dark text-light">
-            <h1 className="text-center mb-3 fw-bold">
-              {userData.personalDetails.name}
-            </h1>
-            <h6 className="text-center">
-              {userData.personalDetails.email} |{" "}
-              {userData.personalDetails.phone} |{" "}
-              {userData.personalDetails.address}
-            </h6>
-          </div>
-          <div className="mt-2 pt-4 px-4 text-center d-flex justify-content-center align-items-center">
-            <h5 className="text-center p-2 bg-dark-subtle w-75 fw-bold">
-              Education
-            </h5>
-          </div>
-          <div className="d-flex justify-content-center align-items-center ">
-            <Row>
-              <Col>yo</Col>
-              <Col>yo</Col>
-            </Row>
-          </div>
-          <div className="mt-2 pt-4 px-4 text-center d-flex justify-content-center align-items-center">
-            <h5 className="text-center p-2 bg-dark-subtle w-75 fw-bold">
-              Professional Experience
-            </h5>
-          </div>
-          <Row>
-            <Col>yo</Col>
-            <Col>yo</Col>
-          </Row> */}
         </Col>
+
       </Row>
     </Container>
   );
