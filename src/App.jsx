@@ -50,7 +50,10 @@ function App() {
               <Accordion.Item eventKey="0" className="mb-3">
                 <Accordion.Header>Personal Details</Accordion.Header>
                 <Accordion.Body>
-                  <PersonalDetailsForm />
+                  <PersonalDetailsForm
+                    personalDetails={userData.personalDetails}
+                    updatePersonalDetails={updatePersonalDetails}
+                  />
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1" className="mb-3">
@@ -78,7 +81,6 @@ function App() {
         <Col xs={12} lg={7} className="border border-secondary ">
           <ResumeDisplay userData={userData} />
         </Col>
-
       </Row>
     </Container>
   );
