@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 
 import { useState } from "react";
 
-function EducationDetailsForm({ selectedEducation }) {
+function EducationDetailsForm({ selectedEducation, updateEducation }) {
   const [formData, setFormData] = useState(selectedEducation);
 
   const handleChange = (e) => {
@@ -98,7 +98,9 @@ function EducationDetailsForm({ selectedEducation }) {
           <Button variant="secondary" className="mx-1">
             Cancel
           </Button>
-          <Button variant="primary">Save</Button>
+          <Button variant="primary" onClick={() => updateEducation(formData)}>
+            Save
+          </Button>
         </Col>
       </Row>
     </Form>

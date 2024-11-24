@@ -28,6 +28,16 @@ function App() {
     }));
   };
 
+  const updateEducation = (newEducation) => {
+    setUserData((prev) => ({
+      ...prev,
+      education: prev.education.map((educationObject) =>
+        educationObject.id === newEducation.id ? newEducation : educationObject
+      ),
+    }));
+    setSelectedEducation(null);
+  };
+
   const loadExample = () => {
     setUserData(defaultUserData);
   };
@@ -89,6 +99,7 @@ function App() {
                   {selectedEducation && (
                     <EducationDetailsForm
                       selectedEducation={selectedEducation}
+                      updateEducation={updateEducation}
                     />
                   )}
                 </Accordion.Body>
