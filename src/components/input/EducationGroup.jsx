@@ -7,7 +7,7 @@ function EducationGroup({ education, setSelectedEducation }) {
       {education.map((educationObject) => {
         return (
           <Button
-            key={educationObject}
+            key={educationObject.id}
             className="w-100 mb-2"
             variant="outline-secondary"
             onClick={() => setSelectedEducation(educationObject)}

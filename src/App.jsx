@@ -28,6 +28,25 @@ function App() {
     }));
   };
 
+  const createNewEducation = () => {
+    const newEducationObject = {
+      id: crypto.randomUUID(),
+      school: "",
+      degree: "",
+      fieldOfStudy: "",
+      startYear: "",
+      endYear: "",
+      location: "",
+    };
+
+    setUserData((prev) => ({
+      ...prev,
+      education: [...prev.education, newEducationObject],
+    }));
+
+    setSelectedEducation(newEducationObject);
+  };
+
   const updateEducation = (newEducation) => {
     setUserData((prev) => ({
       ...prev,
@@ -99,7 +118,12 @@ function App() {
                         />
                       )}
                       <div className="d-flex justify-content-center mt-2">
-                        <Button variant="secondary">&#43; Add Education</Button>
+                        <Button
+                          variant="secondary"
+                          onClick={createNewEducation}
+                        >
+                          &#43; Add Education
+                        </Button>
                       </div>
                     </>
                   )}

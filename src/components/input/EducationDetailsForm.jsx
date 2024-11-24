@@ -22,16 +22,18 @@ function EducationDetailsForm({
   };
 
   const handleUpdate = () => {
-    updateEducation(formData)
+    if (formData.school === "") return;
+    updateEducation(formData);
     setSelectedEducation(null);
-  }
+  };
 
   const handleDelete = () => {
-    deleteEducation(selectedEducation.id)
+    deleteEducation(selectedEducation.id);
     setSelectedEducation(null);
-  }
+  };
 
   const handleCancel = () => {
+    if (selectedEducation.school === "") deleteEducation(selectedEducation.id);
     setSelectedEducation(null);
   };
 
@@ -111,10 +113,7 @@ function EducationDetailsForm({
       <br />
       <Row>
         <Col xs={3}>
-          <Button
-            variant="danger"
-            onClick={handleDelete}
-          >
+          <Button variant="danger" onClick={handleDelete}>
             Delete
           </Button>
         </Col>
@@ -122,7 +121,7 @@ function EducationDetailsForm({
           <Button variant="secondary" onClick={handleCancel} className="mx-1">
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleUpdate}>
+          <Button variant="primary" disabled={formData.school === ""} onClick={handleUpdate}>
             Save
           </Button>
         </Col>

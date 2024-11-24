@@ -24,9 +24,15 @@ function ResumeDisplay({ userData }) {
         <Col xs={{ span: 10, offset: 1 }} className="mt-3">
           <h5 className="text-center p-2 bg-dark-subtle fw-bold">Education</h5>
         </Col>
-        {userData.education.length > 0 && (
-          <EducationDisplay education={userData.education[0]} />
-        )}
+        {userData.education.length > 0 &&
+          userData.education.map((educationObject) => {
+            return (
+              <EducationDisplay
+                key={educationObject.id}
+                education={educationObject}
+              />
+            );
+          })}
       </Row>
       <Row>
         <Col xs={{ span: 10, offset: 1 }} className="mt-3">
