@@ -15,7 +15,8 @@ function ExperienceDisplay({ experience }) {
         <p className="m-0">{experience.position}</p>
         <ul className="p-0 px-4 mt-1">
           {experience.responsibilities.map((responsibility) => {
-            return <li key={responsibility}>{responsibility}</li>;
+            if (responsibility.text)
+              return <li key={responsibility.id}>{responsibility.text}</li>;
           })}
         </ul>
       </Col>

@@ -1,15 +1,21 @@
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-function ExperienceGroup() {
+function ExperienceGroup({ workExperience, setSelectedExperience }) {
   return (
     <Col>
-      <Button className="w-100 mb-2" variant="outline-secondary">
-        Experience 1
-      </Button>
-      <Button className="w-100 mb-2" variant="outline-secondary">
-        Experience 2
-      </Button>
+      {workExperience.map((experience) => {
+        return (
+          <Button
+            key={experience.id}
+            className="w-100 mb-2"
+            variant="outline-secondary"
+            onClick={() => setSelectedExperience(experience)}
+          >
+            {experience.company}
+          </Button>
+        );
+      })}
     </Col>
   );
 }

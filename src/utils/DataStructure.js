@@ -25,9 +25,18 @@ const defaultUserData = {
       startDate: "07/2022",
       endDate: "Present",
       responsibilities: [
-        "Made widgets",
-        "Performed widget quality control",
-        "Lead daily widget meetings",
+        {
+          id: 1,
+          text: "Made widgets",
+        },
+        {
+          id: 2,
+          text: "Performed widget quality control",
+        },
+        {
+          id: 3,
+          text: "Lead daily widget meetings",
+        },
       ],
       location: "Townville, ST",
     },

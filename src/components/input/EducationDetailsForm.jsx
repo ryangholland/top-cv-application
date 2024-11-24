@@ -121,7 +121,11 @@ function EducationDetailsForm({
           <Button variant="secondary" onClick={handleCancel} className="mx-1">
             Cancel
           </Button>
-          <Button variant="primary" disabled={formData.school === ""} onClick={handleUpdate}>
+          <Button
+            variant="primary"
+            disabled={formData.school === ""}
+            onClick={handleUpdate}
+          >
             Save
           </Button>
         </Col>

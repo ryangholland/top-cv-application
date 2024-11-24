@@ -17,6 +17,7 @@ import ExperienceDetailsForm from "./components/input/ExperienceDetailsForm";
 function App() {
   const [userData, setUserData] = useState(defaultUserData);
   const [selectedEducation, setSelectedEducation] = useState(null);
+  const [selectedExperience, setSelectedExperience] = useState(null);
 
   const updatePersonalDetails = (field, value) => {
     setUserData((prev) => ({
@@ -61,6 +62,56 @@ function App() {
       ...prev,
       education: prev.education.filter(
         (educationObject) => educationObject.id !== id
+      ),
+    }));
+  };
+
+  const createNewExperience = () => {
+    const newExperience = {
+      id: crypto.randomUUID(),
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      responsibilities: [
+        {
+          id: 1,
+          text: "",
+        },
+        {
+          id: 2,
+          text: "",
+        },
+        {
+          id: 3,
+          text: "",
+        },
+      ],
+      location: "",
+    };
+
+    setUserData((prev) => ({
+      ...prev,
+      workExperience: [...prev.workExperience, newExperience],
+    }));
+
+    setSelectedExperience(newExperience);
+  };
+
+  const updateExperience = (newExperience) => {
+    setUserData((prev) => ({
+      ...prev,
+      workExperience: prev.workExperience.map((experience) =>
+        experience.id === newExperience.id ? newExperience : experience
+      ),
+    }));
+  };
+
+  const deleteExperience = (id) => {
+    setUserData((prev) => ({
+      ...prev,
+      workExperience: prev.workExperience.filter(
+        (experience) => experience.id !== id
       ),
     }));
   };
@@ -141,11 +192,33 @@ function App() {
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Experience</Accordion.Header>
                 <Accordion.Body>
-                  {userData.workExperience.length > 0 && <ExperienceGroup />}
-                  <div className="d-flex justify-content-center mt-2">
-                    <Button variant="secondary">&#43; Add Experience</Button>
-                  </div>
-                  {/* <ExperienceDetailsForm /> */}
+                  {!selectedExperience && (
+                    <>
+                      {userData.workExperience.length > 0 && (
+                        <ExperienceGroup
+                          workExperience={userData.workExperience}
+                          setSelectedExperience={setSelectedExperience}
+                        />
+                      )}
+                      <div className="d-flex justify-content-center mt-2">
+                        <Button
+                          variant="secondary"
+                          onClick={createNewExperience}
+                        >
+                          &#43; Add Experience
+                        </Button>
+                      </div>
+                    </>
+                  )}
+
+                  {selectedExperience && (
+                    <ExperienceDetailsForm
+                      selectedExperience={selectedExperience}
+                      updateExperience={updateExperience}
+                      setSelectedExperience={setSelectedExperience}
+                      deleteExperience={deleteExperience}
+                    />
+                  )}
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

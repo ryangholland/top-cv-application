@@ -40,9 +40,12 @@ function ResumeDisplay({ userData }) {
             Professional Experience
           </h5>
         </Col>
-        {userData.workExperience.length > 0 && (
-          <ExperienceDisplay experience={userData.workExperience[0]} />
-        )}
+        {userData.workExperience.length > 0 &&
+          userData.workExperience.map((experience) => {
+            return (
+              <ExperienceDisplay key={experience.id} experience={experience} />
+            );
+          })}
       </Row>
     </Container>
   );
