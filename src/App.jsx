@@ -35,7 +35,15 @@ function App() {
         educationObject.id === newEducation.id ? newEducation : educationObject
       ),
     }));
-    setSelectedEducation(null);
+  };
+
+  const deleteEducation = (id) => {
+    setUserData((prev) => ({
+      ...prev,
+      education: prev.education.filter(
+        (educationObject) => educationObject.id !== id
+      ),
+    }));
   };
 
   const loadExample = () => {
@@ -100,6 +108,8 @@ function App() {
                     <EducationDetailsForm
                       selectedEducation={selectedEducation}
                       updateEducation={updateEducation}
+                      setSelectedEducation={setSelectedEducation}
+                      deleteEducation={deleteEducation}
                     />
                   )}
                 </Accordion.Body>

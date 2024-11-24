@@ -5,7 +5,12 @@ import Button from "react-bootstrap/Button";
 
 import { useState } from "react";
 
-function EducationDetailsForm({ selectedEducation, updateEducation }) {
+function EducationDetailsForm({
+  selectedEducation,
+  updateEducation,
+  setSelectedEducation,
+  deleteEducation,
+}) {
   const [formData, setFormData] = useState(selectedEducation);
 
   const handleChange = (e) => {
@@ -14,6 +19,20 @@ function EducationDetailsForm({ selectedEducation, updateEducation }) {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleUpdate = () => {
+    updateEducation(formData)
+    setSelectedEducation(null);
+  }
+
+  const handleDelete = () => {
+    deleteEducation(selectedEducation.id)
+    setSelectedEducation(null);
+  }
+
+  const handleCancel = () => {
+    setSelectedEducation(null);
   };
 
   return (
@@ -92,13 +111,18 @@ function EducationDetailsForm({ selectedEducation, updateEducation }) {
       <br />
       <Row>
         <Col xs={3}>
-          <Button variant="danger">Delete</Button>
+          <Button
+            variant="danger"
+            onClick={handleDelete}
+          >
+            Delete
+          </Button>
         </Col>
         <Col xs={9} className="text-end">
-          <Button variant="secondary" className="mx-1">
+          <Button variant="secondary" onClick={handleCancel} className="mx-1">
             Cancel
           </Button>
-          <Button variant="primary" onClick={() => updateEducation(formData)}>
+          <Button variant="primary" onClick={handleUpdate}>
             Save
           </Button>
         </Col>
