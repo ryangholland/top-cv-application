@@ -1,15 +1,21 @@
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-function EducationGroup() {
+function EducationGroup({ education, setSelectedEducation }) {
   return (
     <Col>
-      <Button className="w-100 mb-2" variant="outline-secondary">
-        Education 1
-      </Button>
-      <Button className="w-100 mb-2" variant="outline-secondary">
-        Education 2
-      </Button>
+      {education.map((educationObject) => {
+        return (
+          <Button
+            key={educationObject}
+            className="w-100 mb-2"
+            variant="outline-secondary"
+            onClick={() => setSelectedEducation(educationObject)}
+          >
+            {educationObject.school}
+          </Button>
+        );
+      })}
     </Col>
   );
 }

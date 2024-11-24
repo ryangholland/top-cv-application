@@ -16,6 +16,7 @@ import ExperienceDetailsForm from "./components/input/ExperienceDetailsForm";
 
 function App() {
   const [userData, setUserData] = useState(defaultUserData);
+  const [selectedEducation, setSelectedEducation] = useState(null);
 
   const updatePersonalDetails = (field, value) => {
     setUserData((prev) => ({
@@ -71,11 +72,25 @@ function App() {
               <Accordion.Item eventKey="1" className="mb-3">
                 <Accordion.Header>Education</Accordion.Header>
                 <Accordion.Body>
-                  {userData.education.length > 0 && <EducationGroup />}
-                  <div className="d-flex justify-content-center mt-2">
-                    <Button variant="secondary">&#43; Add Education</Button>
-                  </div>
-                  {/* <EducationDetailsForm /> */}
+                  {!selectedEducation && (
+                    <>
+                      {userData.education.length > 0 && (
+                        <EducationGroup
+                          education={userData.education}
+                          setSelectedEducation={setSelectedEducation}
+                        />
+                      )}
+                      <div className="d-flex justify-content-center mt-2">
+                        <Button variant="secondary">&#43; Add Education</Button>
+                      </div>
+                    </>
+                  )}
+
+                  {selectedEducation && (
+                    <EducationDetailsForm
+                      selectedEducation={selectedEducation}
+                    />
+                  )}
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">

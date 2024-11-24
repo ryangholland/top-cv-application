@@ -9,7 +9,7 @@ const defaultUserData = {
   education: [
     {
       id: 1,
-      school: "Citytown Univerity",
+      school: "Citytown University",
       degree: "Bachelors",
       fieldOfStudy: "Nerdy Stuff",
       startYear: "2018",
