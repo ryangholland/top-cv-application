@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 function EducationDisplay( {education} ) {
   return (
     <Row className="my-2">
-      <Col xs={{ span: 3, offset: 1 }}>
+      <Col xs={{ span: 4, offset: 1 }}>
         <p className="m-0">{education.startYear} - {education.endYear}</p>
         <p className="m-0">{education.location}</p>
       </Col>
